@@ -4,7 +4,7 @@
 require_relative "../lib/synonym_searcher_jp.rb"
 
 separate = 4
-SynonymSearcherJp::fetch(ARGV[0]).each.with_index(separate+1) {|e,i| print e+"　"*(18-e.size)+((i%separate==0)?"\n":"")}
+SynonymSearcherJp::fetch(ARGV[0]).each.with_index(separate+1) {|e,i| el=e.sub(/\（.*?\）/,"");print el+"　"*(17-el.size)+((i%separate==0)?"\n":"")}
 
 # require "thor"
 #
