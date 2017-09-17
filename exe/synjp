@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+
+require_relative "../lib/synonym_searcher_jp.rb"
+
+separate = 4
+SynonymSearcherJp::fetch(ARGV[0]).each.with_index(separate+1) {|e,i| print e+"　"*(18-e.size)+((i%separate==0)?"\n":"")}
+
+# require "thor"
+#
+# module SynonymSearcherJp
+# 	class CLI < Thor
+# 		default_command :fetch
+# 		desc "fetch WORD",""
+# 		def fetch word=""
+# 			SynonymSearcherJp::fetch(word).each{|e| puts e}
+# 		end
+# 	end
+# end
+#
+# SynonymSearcherJp::CLI.start
