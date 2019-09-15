@@ -1,10 +1,21 @@
 #!/usr/bin/env ruby
 
-
 require_relative "../lib/synonym_searcher_jp.rb"
 
-separate = 4
-SynonymSearcherJp::fetch(ARGV[0]).each.with_index(separate+1) {|e,i| el=e.sub(/\（.*?\）/,"");print el+"　"*(17-el.size)+((i%separate==0)?"\n":"")}
+def pp lists, column = 4, w = 18
+    column_count = 0
+    lists.each { |e|
+        print e
+        print "　" * (w - e.size % w)
+        column_count +=  (e.size / w + 1)
+        if column_count >= column
+            print "\n"
+            column_count = 0
+        end
+    }
+end
+
+pp SynonymSearcherJp::fetch_wno_ruby(ARGV[0])
 
 # require "thor"
 #
